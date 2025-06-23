@@ -28,19 +28,19 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   final _items = const [
     OnboardingItem(
-      imageAsset: 'assets/images/onboarding_1.svg',
+      imageAsset: 'assets/images/onboarding/onboarding_1.svg',
       title: 'Kết nối cộng đồng',
       subtitle:
           'Giao lưu, chia sẻ và cùng nhau tạo nên một cộng đồng yêu thiên nhiên gắn kết vững mạnh',
     ),
     OnboardingItem(
-      imageAsset: 'assets/images/onboarding_2.svg',
+      imageAsset: 'assets/images/onboarding/onboarding_2.svg',
       title: 'Quản lý cây trồng',
       subtitle:
           'Tạo lộ trình chăm sóc, quản lý cây trồng hiệu quả, cùng mọi người phát triển vườn cây của mình',
     ),
     OnboardingItem(
-      imageAsset: 'assets/images/onboarding_3.svg',
+      imageAsset: 'assets/images/onboarding/onboarding_3.svg',
       title: 'Cập nhật kiến thức',
       subtitle:
           'Học hỏi những kiến thức bổ ích về cây trồng, giao lưu và chia sẻ kiến thức với mọi người xung quanh',
@@ -63,10 +63,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   void _skip() => _finish();
 
   void _finish() {
-    // TODO: Navigate to login/landing page when implemented.
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Onboarding finished (route TBD)')),
-    );
+    Navigator.of(context).pushReplacementNamed('/welcome');
   }
 
   @override

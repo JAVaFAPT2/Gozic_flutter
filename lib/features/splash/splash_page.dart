@@ -14,9 +14,11 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 2), () {
-      if (!mounted) return;
-      Navigator.of(context).pushReplacementNamed('/onboarding');
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Future.delayed(const Duration(seconds: 2), () {
+        if (!mounted) return;
+        Navigator.of(context).pushReplacementNamed('/onboarding');
+      });
     });
   }
 
@@ -24,7 +26,7 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: SvgPicture.asset('assets/images/logo.svg', width: 160),
+        child: SvgPicture.asset('assets/icons/logo.svg', width: 160),
       ),
     );
   }

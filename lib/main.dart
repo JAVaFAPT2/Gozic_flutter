@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'shared/theme/design_tokens.dart';
 import 'features/splash/splash_page.dart';
 import 'features/auth/onboarding/onboarding_page.dart';
+import 'features/auth/login/login_page.dart';
+import 'features/auth/register/register_page.dart';
+import 'features/auth/welcome/welcome_page.dart';
+import 'home_page.dart';
+import 'features/profile/onboarding/profile_onboarding_flow.dart';
+import 'features/auth/register/register_success_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +23,15 @@ class MyApp extends StatelessWidget {
       title: 'Gozic',
       debugShowCheckedModeBanner: false,
       theme: buildTheme(),
-      routes: {'/onboarding': (_) => const OnboardingPage()},
+      routes: {
+        '/onboarding': (_) => const OnboardingPage(),
+        '/login': (_) => const LoginPage(),
+        '/register': (_) => const RegisterPage(),
+        '/register-success': (_) => const RegisterSuccessPage(),
+        '/welcome': (_) => const WelcomePage(),
+        '/home': (_) => const HomePage(),
+        '/profile': (_) => const ProfileOnboardingFlow(),
+      },
       home: const SplashPage(),
     );
   }
