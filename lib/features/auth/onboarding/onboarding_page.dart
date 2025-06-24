@@ -63,7 +63,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
   void _skip() => _finish();
 
   void _finish() {
-    Navigator.of(context).pushReplacementNamed('/welcome');
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      Navigator.of(context).pushReplacementNamed('/welcome');
+    });
   }
 
   @override
