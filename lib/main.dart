@@ -5,7 +5,7 @@ import 'features/auth/onboarding/onboarding_page.dart';
 import 'features/auth/login/login_page.dart';
 import 'features/auth/register/register_page.dart';
 import 'features/auth/welcome/welcome_page.dart';
-import 'home_page.dart';
+import 'features/home/home_page.dart';
 import 'features/profile/onboarding/profile_onboarding_flow.dart';
 import 'features/auth/register/register_success_page.dart';
 
