@@ -6,5 +6,31 @@
       "email": "demo@example.com",
       "password": "secret123"
     }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "author": "Mot Nguyen",
+      "avatarUrl": "https://picsum.photos/seed/mot/150",
+      "role": "Thợ vườn tập sự",
+      "timestamp": "15 phút",
+      "content": "Chào mọi người đây là cây mới của mình. Hãy theo dõi mình nhé!",
+      "imageUrl": "https://picsum.photos/seed/motplant/600/600",
+      "likes": 28,
+      "comments": 10,
+      "shares": 1
+    },
+    {
+      "id": 2,
+      "author": "Dang Quang Vu",
+      "avatarUrl": "https://picsum.photos/seed/vu/150",
+      "role": "Người đóng góp tiêu biểu",
+      "timestamp": "2 giờ",
+      "content": "Có thể bạn chưa biết một số loại cây cần lau sạch lớp bụi trên lá thường xuyên để giúp...",
+      "imageUrl": "https://picsum.photos/seed/vuplant/600/500",
+      "likes": 334,
+      "comments": 134,
+      "shares": 53
+    }
   ]
 } 

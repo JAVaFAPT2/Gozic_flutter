@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gozic_mobile/icons.dart' as icons;
 
 /// Temporary data model for a post while waiting for backend / real models.
 class _Post {
@@ -86,28 +87,28 @@ class _HomePageState extends State<HomePage> {
         items: [
           _navItem(
             label: 'Trang chủ',
-            icon: 'assets/icons/nav_home.svg',
-            activeIcon: 'assets/icons/nav_home_active.svg',
+            icon: icons.GzIcons.navHome,
+            activeIcon: icons.GzIcons.navHomeActive,
           ),
           _navItem(
             label: 'Thư viện',
-            icon: 'assets/icons/nav_book.svg',
-            activeIcon: 'assets/icons/nav_book_active.svg',
+            icon: icons.GzIcons.navBook,
+            activeIcon: icons.GzIcons.navBookActive,
           ),
           _navItem(
             label: 'Bài viết',
-            icon: 'assets/icons/nav_plus.svg',
-            activeIcon: 'assets/icons/nav_plus_active.svg',
+            icon: icons.GzIcons.navPlus,
+            activeIcon: icons.GzIcons.navPlusActive,
           ),
           _navItem(
             label: 'Thông báo',
-            icon: 'assets/icons/nav_bell.svg',
-            activeIcon: 'assets/icons/nav_bell_active.svg',
+            icon: icons.GzIcons.navBell,
+            activeIcon: icons.GzIcons.navBellActive,
           ),
           _navItem(
             label: 'Vườn cây',
-            icon: 'assets/icons/nav_garden.svg',
-            activeIcon: 'assets/icons/nav_garden_active.svg',
+            icon: icons.GzIcons.navGarden,
+            activeIcon: icons.GzIcons.navGardenActive,
           ),
         ],
       ),
@@ -161,6 +162,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
+          automaticallyImplyLeading: false,
         ),
         SliverPersistentHeader(pinned: true, delegate: _CategoryTabsDelegate()),
         SliverList(
@@ -314,7 +316,20 @@ class _PostCard extends StatelessWidget {
             const SizedBox(height: 8),
             ClipRRect(
               borderRadius: BorderRadius.circular(15),
-              child: Image.network(post.imageUrl, fit: BoxFit.cover),
+              child: Image.network(
+                post.imageUrl,
+                fit: BoxFit.cover,
+                errorBuilder: (_, __, ___) => Container(
+                  height: 220,
+                  color: const Color(0xFFE0E0E0),
+                  alignment: Alignment.center,
+                  child: const Icon(
+                    Icons.broken_image,
+                    size: 48,
+                    color: Color(0xFF777B84),
+                  ),
+                ),
+              ),
             ),
             const SizedBox(height: 8),
             Row(
@@ -338,13 +353,16 @@ class _PostCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: const [
-                _PostAction(icon: Icons.favorite_border, label: 'Thích'),
+                _PostAction(iconPath: icons.GzIcons.postHeart, label: 'Thích'),
                 _PostAction(
-                  icon: Icons.mode_comment_outlined,
+                  iconPath: icons.GzIcons.postComment,
                   label: 'Bình luận',
                 ),
-                _PostAction(icon: Icons.send_outlined, label: 'Chia sẻ'),
-                _PostAction(icon: Icons.bookmark_border, label: 'Lưu'),
+                _PostAction(
+                  iconPath: icons.GzIcons.postShare,
+                  label: 'Chia sẻ',
+                ),
+                _PostAction(iconPath: icons.GzIcons.postBookmark, label: 'Lưu'),
               ],
             ),
           ],
@@ -355,16 +373,16 @@ class _PostCard extends StatelessWidget {
 }
 
 class _PostAction extends StatelessWidget {
-  final IconData icon;
+  final String iconPath;
   final String label;
-  const _PostAction({required this.icon, required this.label});
+  const _PostAction({required this.iconPath, required this.label});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(icon, size: 20, color: const Color(0xFF777B84)),
+        SvgPicture.asset(iconPath, height: 20, width: 20),
         const SizedBox(height: 2),
         Text(label, style: const TextStyle(fontSize: 10)),
       ],
